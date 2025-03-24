@@ -1,0 +1,22 @@
+name: Run Telegram Bots
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  run-bots:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: pip install pyTelegramBotAPI
+
+      - name: Run bots
+        run: |
+          nohup python3 SkamBot.py &
+          nohup python3 BobikBotAi.py &
+          nohup python3 VRT_game_bot.py &
